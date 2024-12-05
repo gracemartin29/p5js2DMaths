@@ -2,8 +2,9 @@
 // p = point
 let p = {}
 let pSize = 20;
-let speed = 2;
+let speed = 4;
 let theta;
+
 function setup() {
   createCanvas(innerWidth, innerHeight);
   // for random distribution
@@ -77,9 +78,22 @@ function draw() {
   ////////////////
   // angular velocity
   ////////////////
+/*
   p.x += cos(theta) * speed;
   p.y += sin(theta) * speed;
-  circle(p.x, p.y, pSize)
+  circle(p.x, p.y, pSize) */
+
+    ////////////////
+  // angle from position
   ////////////////
+  // difference between source object and target on y and x axis
+  let dy = mouseY - p.y;
+  let dx = mouseX - p.x;
+  theta = atan2(dy, dx);
+  // calculate angle between object and mouse
+  p.x += cos(theta) * speed;
+  p.y += sin(theta) * speed;
+  circle(p.x, p.y, pSize);
 
 }
+
