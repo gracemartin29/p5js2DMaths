@@ -2,7 +2,7 @@
 // p = point
 let p = {}
 let pSize = 20;
-let speed = 4;
+let speed = 8;
 let theta;
 
 function setup() {
@@ -87,13 +87,27 @@ function draw() {
   // angle from position
   ////////////////
   // difference between source object and target on y and x axis
-  let dy = mouseY - p.y;
+  /*let dy = mouseY - p.y;
   let dx = mouseX - p.x;
   theta = atan2(dy, dx);
   // calculate angle between object and mouse
   p.x += cos(theta) * speed;
   p.y += sin(theta) * speed;
-  circle(p.x, p.y, pSize);
+  circle(p.x, p.y, pSize); */
+
+  ////////////////
+  // make a circle using cos and sin
+  ////////////////
+  let r = 70;
+  // sets angle to 0 and adds a little through each itteration
+  for(let t = 0; t < TAU; t+= 0.05){
+    // bidmas is different (multiplication -> division -> minus -> addition)
+    let x = sin(t) * r + width/2;
+    let y = cos(t) * r + height/2;
+
+    circle(x, y, 8)
+    fill(255,0,0)
+  }
 
 }
 
